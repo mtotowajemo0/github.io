@@ -3,140 +3,117 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Emmanuel Maeke Kioko</title>
+  <meta name="description" content="Portfolio of Emmanuel Maeke Kioko, Data Science and Analytics Graduate specializing in Stock Market Analysis and Financial Modeling." />
+  <title>Emmanuel Maeke Kioko | Data Scientist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <style>
     body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom right, #f8f9fa, #e9ecef);
-      color: #333;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+      color: #1f2937;
+      scroll-behavior: smooth;
     }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 50px;
-      background: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    .hero-bg {
+      background: linear-gradient(to right, #10b981, #059669);
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
     }
-    header h1 {
-      font-size: 1.8em;
-      font-weight: bold;
-      margin: 0;
+    .glass-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
-    nav a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
+    .hover-scale {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    nav a:hover {
-      color: #28a745;
+    .hover-scale:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     }
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 60px;
-      flex-wrap: wrap;
-      gap: 50px;
+    .nav-link {
+      position: relative;
     }
-    .intro {
-      max-width: 500px;
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: #10b981;
+      transition: width 0.3s ease;
     }
-    .intro h2 {
-      font-size: 2em;
+    .nav-link:hover::after {
+      width: 100%;
     }
-    .intro p {
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-    .buttons a {
-      display: inline-block;
-      margin: 5px;
-      padding: 10px 20px;
-      background-color: #28a745;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-    .buttons a:hover {
-      background-color: #218838;
-    }
-    .photo img {
-      max-width: 300px;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-    }
-    h2.section-title {
-      font-size: 1.8em;
-      margin-bottom: 15px;
-      color: #28a745;
-    }
-    .projects ul {
-      list-style: none;
-      padding: 0;
-    }
-    .projects li {
-      margin-bottom: 10px;
-    }
-    .projects a {
-      color: #007bff;
-      text-decoration: none;
-    }
-    .projects a:hover {
-      text-decoration: underline;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #f8f9fa;
-      margin-top: 40px;
-      font-size: 0.9em;
+    @media (max-width: 640px) {
+      .hero-bg {
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Emmanuel Maeke Kioko</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#projects">Projects</a>
-      <a href="mailto:mtotowajemo3@gmail.com">Email</a>
-      <a href="https://www.linkedin.com/in/emmanuelmaeke/" target="_blank">LinkedIn</a>
+  <header class="sticky top-0 bg-white shadow-sm z-10">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-gray-800">Emmanuel Maeke Kioko</h1>
+      <div class="space-x-6">
+        <a href="#home" class="nav-link text-gray-600 hover:text-emerald-600">Home</a>
+        <a href="#projects" class="nav-link text-gray-600 hover:text-emerald-600">Projects</a>
+        <a href="mailto:mtotowajemo3@gmail.com" class="nav-link text-gray-600 hover:text-emerald-600">Email</a>
+        <a href="https://www.linkedin.com/in/emmanuelmaeke/" target="_blank" class="nav-link text-gray-600 hover:text-emerald-600">LinkedIn</a>
+      </div>
     </nav>
   </header>
 
-  <div class="container">
-    <div class="intro">
-      <h2>Hi there 👋</h2>
-      <p>My name is <strong>Emmanuel Maeke Kioko</strong>.</p>
-      <p>I am a <strong>Data Science and Analytics Graduate</strong> with a strong background in <strong>Banking and Finance</strong>.</p>
-      <p>I specialize in <strong>Stock Market Analysis, Financial Modeling</strong>, and <strong>AI-powered insights</strong>. I’m passionate about building tools that make data easier to understand and act upon.</p>
-      <div class="buttons">
-        <a href="#projects">View Projects</a>
-        <a href="mailto:mtotowajemo3@gmail.com">Contact Me</a>
-        <a href="https://www.linkedin.com/in/emmanuelmaeke/" target="_blank">LinkedIn</a>
+  <section id="home" class="hero-bg py-20">
+    <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+      <div class="md:w-1/2 text-white">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">Hi, I'm Emmanuel 👋</h2>
+        <p class="text-lg mb-4">Data Science & Analytics Graduate with expertise in <strong>Stock Market Analysis</strong>, <strong>Financial Modeling</strong>, and <strong>AI-powered insights</strong>.</p>
+        <p class="text-lg mb-6">I build tools that transform complex data into actionable insights, blending my passion for finance and technology.</p>
+        <div class="space-x-4">
+          <a href="#projects" class="inline-block px-6 py-3 bg-white text-emerald-600 font-semibold rounded-lg shadow-md hover:bg-emerald-50 hover-scale">Explore Projects</a>
+          <a href="mailto:mtotowajemo3@gmail.com" class="inline-block px-6 py-3 bg-transparent border border-white text-white font-semibold rounded-lg hover:bg-white hover:text-emerald-600 hover-scale">Contact Me</a>
+        </div>
+      </div>
+      <div class="md:w-1/2">
+        <img src="your-photo.jpg" alt="Emmanuel Maeke Kioko" class="w-full max-w-sm mx-auto rounded-2xl shadow-xl hover-scale">
       </div>
     </div>
-    <div class="photo">
-      <img src="your-photo.jpg" alt="Emmanuel Maeke Kioko">
+  </section>
+
+  <section id="projects" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-emerald-600 mb-12 text-center">My Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="glass-card p-6 rounded-xl hover-scale">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">💳 Loan Prediction App</h3>
+          <p class="text-gray-600 mb-4">A machine learning-powered app to predict loan eligibility with high accuracy.</p>
+          <a href="https://huggingface.co/spaces/MtotoWaJemo/loan-prediction" target="_blank" class="text-emerald-600 font-semibold hover:underline">View Project →</a>
+        </div>
+        <div class="glass-card p-6 rounded-xl hover-scale">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">📈 Nifty50 Historical Analytics</h3>
+          <p class="text-gray-600 mb-4">Interactive dashboard for analyzing historical Nifty50 stock market trends.</p>
+          <a href="https://huggingface.co/spaces/MtotoWaJemo/Nifty50-historical-analytics" target="_blank" class="text-emerald-600 font-semibold hover:underline">View Project →</a>
+        </div>
+        <div class="glass-card p-6 rounded-xl hover-scale">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">📰 Nifty News Analysis</h3>
+          <p class="text-gray-600 mb-4">AI-driven tool for sentiment analysis of Nifty-related news articles.</p>
+          <a href="https://huggingface.co/spaces/MtotoWaJemo/nifty-news-analysis" target="_blank" class="text-emerald-600 font-semibold hover:underline">View Project →</a>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div id="projects" class="container projects" style="flex-direction: column; align-items: flex-start;">
-    <h2 class="section-title">My Projects</h2>
-    <ul>
-      <li><a href="https://huggingface.co/spaces/MtotoWaJemo/loan-prediction" target="_blank">💳 Loan Prediction App</a></li>
-      <li><a href="https://huggingface.co/spaces/MtotoWaJemo/Nifty50-historical-analytics" target="_blank">📈 Nifty50 Historical Analytics</a></li>
-      <li><a href="https://huggingface.co/spaces/MtotoWaJemo/nifty-news-analysis" target="_blank">📰 Nifty News Analysis</a></li>
-    </ul>
-  </div>
-
-  <footer>
-    <p>© 2025 Emmanuel Maeke Kioko. Built with ❤️ using GitHub Pages.</p>
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-6 text-center">
+      <p class="text-sm">© 2025 Emmanuel Maeke Kioko.</p>
+      <div class="mt-4 space-x-4">
+        <a href="https://www.linkedin.com/in/emmanuelmaeke/" target="_blank" class="text-gray-300 hover:text-emerald-400">LinkedIn</a>
+        <a href="mailto:mtotowajemo3@gmail.com" class="text-gray-300 hover:text-emerald-400">Email</a>
+      </div>
+    </div>
   </footer>
 </body>
 </html>
