@@ -8,27 +8,27 @@
   <meta name="author" content="Emmanuel Maeke Kioko" />
   <title>Emmanuel Maeke Kioko | Data Scientist</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <style>
     :root {
-      --bg-color: #f9fafb;
-      --text-color: #1f2937;
-      --card-bg: #ffffff;
-      --card-border: #e5e7eb;
-      --accent-color: #3b82f6;
-      --accent-dark: #1e3a8a;
+      --bg-color: #f0f4f8;
+      --text-color: #1a202c;
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --card-border: rgba(255, 255, 255, 0.2);
+      --accent-color: #14b8a6;
+      --accent-dark: #5b21b6;
     }
     [data-theme="dark"] {
-      --bg-color: #1f2937;
-      --text-color: #f9fafb;
-      --card-bg: #374151;
-      --card-border: #4b5563;
-      --accent-color: #60a5fa;
-      --accent-dark: #2563eb;
+      --bg-color: #1a202c;
+      --text-color: #f0f4f8;
+      --card-bg: rgba(55, 65, 81, 0.9);
+      --card-border: rgba(55, 65, 81, 0.2);
+      --accent-color: #2dd4bf;
+      --accent-dark: #7c3aed;
     }
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Poppins', sans-serif;
       background: var(--bg-color);
       color: var(--text-color);
       scroll-behavior: smooth;
@@ -36,51 +36,49 @@
       transition: background 0.3s ease, color 0.3s ease;
     }
     h1, h2, h3 {
-      font-family: 'Playfair Display', serif;
+      font-weight: 700;
     }
     .hero-bg {
       background: linear-gradient(135deg, var(--accent-dark), var(--accent-color));
-      clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-      padding-bottom: 10rem;
+      padding: 4rem 0;
       position: relative;
       overflow: hidden;
     }
-    .hero-bg::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://source.unsplash.com/random/1920x1080/?abstract') no-repeat center center/cover;
-      opacity: 0.1;
-      z-index: 0;
+    .hero-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      animation: fadeUp 0.8s ease-out;
     }
     .profile-img {
-      width: 220px;
-      height: 220px;
+      width: 180px;
+      height: 180px;
       object-fit: cover;
       border-radius: 50%;
-      border: 6px solid var(--card-bg);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      border: 4px solid var(--card-bg);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
     .profile-img:hover {
-      transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+      transform: scale(1.08);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     }
     .classic-card {
       background: var(--card-bg);
+      backdrop-filter: blur(10px);
       border: 1px solid var(--card-border);
-      border-radius: 16px;
+      border-radius: 20px;
+      padding: 1.5rem;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
       position: relative;
       overflow: hidden;
-      animation: slideIn 0.5s ease-out;
     }
     .classic-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
     }
     .classic-card::before {
       content: '';
@@ -88,17 +86,21 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 5px;
+      height: 4px;
       background: linear-gradient(to right, var(--accent-color), var(--accent-dark));
       transition: height 0.3s ease;
     }
     .classic-card:hover::before {
-      height: 10px;
+      height: 8px;
     }
+    .classic-card:nth-child(1) { animation: slideIn 0.5s ease-out 0.1s both; }
+    .classic-card:nth-child(2) { animation: slideIn 0.5s ease-out 0.2s both; }
+    .classic-card:nth-child(3) { animation: slideIn 0.5s ease-out 0.3s both; }
+    .classic-card:nth-child(4) { animation: slideIn 0.5s ease-out 0.4s both; }
     .nav-link {
       position: relative;
-      font-weight: 700;
-      font-size: 1.1rem;
+      font-weight: 600;
+      font-size: 1rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       transition: color 0.3s ease, transform 0.3s ease;
@@ -107,8 +109,8 @@
       content: '';
       position: absolute;
       width: 0;
-      height: 3px;
-      bottom: -6px;
+      height: 2px;
+      bottom: -4px;
       left: 0;
       background: linear-gradient(to right, var(--accent-color), var(--accent-dark));
       transition: width 0.3s ease;
@@ -122,11 +124,12 @@
     }
     .skill-badge {
       display: inline-block;
-      background: linear-gradient(45deg, var(--card-border), var(--card-bg));
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
       color: var(--text-color);
-      padding: 0.6rem 1.2rem;
-      border-radius: 30px;
-      font-size: 0.95rem;
+      padding: 0.5rem 1.2rem;
+      border-radius: 25px;
+      font-size: 0.9rem;
       margin: 0.3rem;
       transition: all 0.3s ease;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -147,7 +150,7 @@
     }
     .fade-in {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(20px);
       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
     .fade-in.visible {
@@ -158,21 +161,21 @@
       background: linear-gradient(45deg, var(--accent-color), var(--accent-dark));
       color: #ffffff;
       padding: 0.75rem 1.5rem;
-      border-radius: 8px;
+      border-radius: 10px;
       font-weight: 600;
       transition: all 0.3s ease;
     }
     .btn-primary:hover {
       background: linear-gradient(45deg, var(--accent-dark), var(--accent-color));
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
     .btn-secondary {
       background: transparent;
       border: 2px solid var(--card-bg);
       color: var(--card-bg);
       padding: 0.75rem 1.5rem;
-      border-radius: 8px;
+      border-radius: 10px;
       font-weight: 600;
       transition: all 0.3s ease;
     }
@@ -180,7 +183,7 @@
       background: var(--card-bg);
       color: var(--accent-dark);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
     .theme-toggle {
       background: none;
@@ -193,8 +196,7 @@
       transform: rotate(180deg);
     }
     .skills-bg {
-      background: url('https://source.unsplash.com/random/1920x1080/?pattern') no-repeat center center/cover;
-      background-size: cover;
+      background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('https://source.unsplash.com/random/1920x1080/?geometric') no-repeat center center/cover;
       position: relative;
       z-index: 1;
     }
@@ -206,8 +208,18 @@
       width: 100%;
       height: 100%;
       background: var(--bg-color);
-      opacity: 0.9;
+      opacity: 0.8;
       z-index: -1;
+    }
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     @keyframes slideIn {
       from {
@@ -231,43 +243,48 @@
     }
     @media (max-width: 768px) {
       .hero-bg {
-        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-        padding-bottom: 8rem;
+        padding: 3rem 0;
       }
       .profile-img {
-        width: 180px;
-        height: 180px;
+        width: 150px;
+        height: 150px;
       }
       .nav-link {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
       }
       .btn-primary, .btn-secondary {
         padding: 0.6rem 1.2rem;
         font-size: 0.9rem;
       }
+      .classic-card {
+        padding: 1.2rem;
+      }
     }
     @media (max-width: 640px) {
       .hero-bg {
-        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        padding: 2rem 0;
       }
       .profile-img {
-        width: 140px;
-        height: 140px;
+        width: 120px;
+        height: 120px;
       }
       .nav-link {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
       }
       .theme-toggle {
         font-size: 1.2rem;
+      }
+      .hero-card {
+        padding: 1.5rem;
       }
     }
   </style>
 </head>
 <body>
-  <header class="sticky top-0 bg-white shadow-xl z-20" data-theme="light">
-    <nav class="container mx-auto px-6 py-5 flex justify-between items-center">
-      <h1 class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">Emmanuel Maeke Kioko</h1>
-      <div class="flex items-center space-x-8">
+  <header class="sticky top-0 bg-white shadow-lg z-20" data-theme="light">
+    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-xl md:text-2xl font-bold text-gray-900 tracking-tight">Emmanuel Maeke Kioko</h1>
+      <div class="flex items-center space-x-6">
         <a href="#home" class="nav-link text-gray-700">Home</a>
         <a href="#skills" class="nav-link text-gray-700">Skills</a>
         <a href="#projects" class="nav-link text-gray-700">Projects</a>
@@ -278,28 +295,30 @@
     </nav>
   </header>
 
-  <section id="home" class="hero-bg py-24 relative">
-    <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
-      <div class="md:w-2/3 text-white fade-in z-10">
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Emmanuel Maeke Kioko</h2>
-        <p class="text-lg md:text-xl leading-relaxed mb-8">
-          Data Scientist and Analyst with a passion for uncovering insights in banking and finance. I leverage advanced analytics, machine learning, and dynamic visualizations to transform complex datasets into strategic solutions, driving impactful data-driven decisions.
-        </p>
-        <div class="space-x-4">
-          <a href="#projects" class="btn-primary inline-block">Explore Projects</a>
-          <a href="mailto:mtotowajemo3@gmail.com" class="btn-secondary inline-block">Contact Me</a>
+  <section id="home" class="hero-bg py-16 relative">
+    <div class="container mx-auto px-4">
+      <div class="hero-card mx-auto max-w-4xl flex flex-col md:flex-row items-center gap-8">
+        <div class="md:w-2/3 text-white z-10">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 tracking-tight">Emmanuel Maeke Kioko</h2>
+          <p class="text-base md:text-lg leading-relaxed mb-6">
+            Data Scientist and Analyst with a passion for uncovering insights in banking and finance. I leverage advanced analytics, machine learning, and dynamic visualizations to transform complex datasets into strategic solutions, driving impactful data-driven decisions.
+          </p>
+          <div class="space-x-4">
+            <a href="#projects" class="btn-primary inline-block">Explore Projects</a>
+            <a href="mailto:mtotowajemo3@gmail.com" class="btn-secondary inline-block">Contact Me</a>
+          </div>
         </div>
-      </div>
-      <div class="md:w-1/3 flex justify-center">
-        <img src="my pic.jpg" alt="Emmanuel Maeke Kioko" class="profile-img">
+        <div class="md:w-1/3 flex justify-center">
+          <img src="my pic.jpg" alt="Emmanuel Maeke Kioko" class="profile-img">
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="skills" class="py-24 skills-bg">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">My Skills</h2>
-      <div class="flex flex-wrap justify-center gap-4 fade-in">
+  <section id="skills" class="py-16 skills-bg">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">My Skills</h2>
+      <div class="flex flex-wrap justify-center gap-3 fade-in">
         <span class="skill-badge">Python</span>
         <span class="skill-badge">R</span>
         <span class="skill-badge">SQL</span>
@@ -316,41 +335,41 @@
     </div>
   </section>
 
-  <section id="projects" class="py-24 bg-white">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">My Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="classic-card p-6 fade-in">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">💳 Loan Prediction App</h3>
-          <p class="text-gray-600 mb-4">A machine learning-powered application to predict loan eligibility with high accuracy using advanced algorithms.</p>
-          <a href="https://huggingface.co/spaces/MtotoWaJemo/loan-prediction" target="_blank" class="text-blue-600 font-semibold hover:underline">View Project →</a>
+  <section id="projects" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">My Projects</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="classic-card fade-in">
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">💳 Loan Prediction App</h3>
+          <p class="text-gray-600 mb-4 text-sm">A machine learning-powered application to predict loan eligibility with high accuracy using advanced algorithms.</p>
+          <a href="https://huggingface.co/spaces/MtotoWaJemo/loan-prediction" target="_blank" class="text-blue-600 font-semibold hover:underline text-sm">View Project →</a>
         </div>
-        <div class="classic-card p-6 fade-in">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">📈 Nifty50 Historical Analytics</h3>
-          <p class="text-gray-600 mb-4">Interactive dashboard for analyzing historical trends of the Nifty50 index with real-time insights.</p>
-          <a href="https://huggingface.co/spaces/MtotoWaJemo/Nifty50-historical-analytics" target="_blank" class="text-blue-600 font-semibold hover:underline">View Project →</a>
+        <div class="classic-card fade-in">
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">📈 Nifty50 Historical Analytics</h3>
+          <p class="text-gray-600 mb-4 text-sm">Interactive dashboard for analyzing historical trends of the Nifty50 index with real-time insights.</p>
+          <a href="https://huggingface.co/spaces/MtotoWaJemo/Nifty50-historical-analytics" target="_blank" class="text-blue-600 font-semibold hover:underline text-sm">View Project →</a>
         </div>
-        <div class="classic-card p-6 fade-in">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">📰 Nifty News Analysis</h3>
-          <p class="text-gray-600 mb-4">AI-driven tool for sentiment analysis of news articles impacting the Nifty index.</p>
-          <a href="https://huggingface.co/spaces/MtotoWaJemo/nifty-news-analysis" target="_blank" class="text-blue-600 font-semibold hover:underline">View Project →</a>
+        <div class="classic-card fade-in">
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">📰 Nifty News Analysis</h3>
+          <p class="text-gray-600 mb-4 text-sm">AI-driven tool for sentiment analysis of news articles impacting the Nifty index.</p>
+          <a href="https://huggingface.co/spaces/MtotoWaJemo/nifty-news-analysis" target="_blank" class="text-blue-600 font-semibold hover:underline text-sm">View Project →</a>
         </div>
-        <div class="classic-card p-6 fade-in">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">🔍 Fraud Message Detector</h3>
-          <p class="text-gray-600 mb-4">An AI-powered tool to detect fraudulent messages using natural language processing and machine learning techniques.</p>
-          <a href="https://huggingface.co/spaces/MtotoWaJemo/FraudMessageDetector" target="_blank" class="text-blue-600 font-semibold hover:underline">View Project →</a>
+        <div class="classic-card fade-in">
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">🔍 Fraud Message Detector</h3>
+          <p class="text-gray-600 mb-4 text-sm">An AI-powered tool to detect fraudulent messages using natural language processing and machine learning techniques.</p>
+          <a href="https://huggingface.co/spaces/MtotoWaJemo/FraudMessageDetector" target="_blank" class="text-blue-600 font-semibold hover:underline text-sm">View Project →</a>
         </div>
       </div>
-      <div class="text-center mt-12">
+      <div class="text-center mt-8">
         <a href="https://git.io/MtotoWaJemo" target="_blank" class="btn-primary inline-block">View More on Git.io</a>
       </div>
     </div>
   </section>
 
-  <footer class="bg-gray-900 text-white py-12">
-    <div class="container mx-auto px-6 text-center">
+  <footer class="bg-gray-900 text-white py-8">
+    <div class="container mx-auto px-4 text-center">
       <p class="text-sm mb-4">© 2025 MtotoWaJemo. All rights reserved.</p>
-      <div class="space-x-8">
+      <div class="space-x-6">
         <a href="https://www.linkedin.com/in/emmanuelmaeke/" target="_blank" class="text-gray-300 hover:text-blue-500">LinkedIn</a>
         <a href="mailto:mtotowajemo3@gmail.com" class="text-gray-300 hover:text-blue-500">Email</a>
         <a href="https://git.io/MtotoWaJemo" target="_blank" class="text-gray-300 hover:text-blue-500">Git.io</a>
