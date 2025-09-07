@@ -13,7 +13,7 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background: #f9fafb;
+      background: linear-gradient(to bottom, #f9fafb, #e5e7eb);
       color: #1f2937;
       scroll-behavior: smooth;
       line-height: 1.6;
@@ -24,44 +24,75 @@
     .hero-bg {
       background: linear-gradient(135deg, #1e3a8a, #3b82f6);
       clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-      padding-bottom: 8rem;
+      padding-bottom: 10rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://source.unsplash.com/random/1920x1080/?abstract') no-repeat center center/cover;
+      opacity: 0.1;
+      z-index: 0;
     }
     .profile-img {
-      width: 200px;
-      height: 200px;
+      width: 220px;
+      height: 220px;
       object-fit: cover;
       border-radius: 50%;
-      border: 5px solid #ffffff;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease;
+      border: 6px solid #ffffff;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
     .profile-img:hover {
-      transform: scale(1.05);
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
     }
     .classic-card {
       background: #ffffff;
       border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 16px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+      overflow: hidden;
     }
     .classic-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+    .classic-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, #3b82f6, #1e3a8a);
+      transition: height 0.3s ease;
+    }
+    .classic-card:hover::before {
+      height: 10px;
     }
     .nav-link {
       position: relative;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: color 0.3s ease;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
     .nav-link::after {
       content: '';
       position: absolute;
       width: 0;
-      height: 2px;
-      bottom: -4px;
+      height: 3px;
+      bottom: -6px;
       left: 0;
-      background-color: #3b82f6;
+      background: linear-gradient(to right, #3b82f6, #1e3a8a);
       transition: width 0.3s ease;
     }
     .nav-link:hover::after {
@@ -69,47 +100,80 @@
     }
     .nav-link:hover {
       color: #3b82f6;
+      transform: translateY(-2px);
     }
     .skill-badge {
       display: inline-block;
-      background: #e5e7eb;
+      background: linear-gradient(45deg, #e5e7eb, #d1d5db);
       color: #1f2937;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      margin: 0.25rem;
-      transition: background 0.3s ease;
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      margin: 0.3rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
     .skill-badge:hover {
-      background: #3b82f6;
+      background: linear-gradient(45deg, #3b82f6, #1e3a8a);
       color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
     footer a {
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
     footer a:hover {
       color: #3b82f6;
+      transform: translateY(-2px);
     }
     .fade-in {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
     .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
+    .btn-primary {
+      background: linear-gradient(45deg, #3b82f6, #1e3a8a);
+      color: #ffffff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid #ffffff;
+      color: #ffffff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .btn-secondary:hover {
+      background: #ffffff;
+      color: #1e3a8a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
     @media (max-width: 768px) {
       .hero-bg {
         clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-        padding-bottom: 6rem;
+        padding-bottom: 8rem;
       }
       .profile-img {
-        width: 160px;
-        height: 160px;
+        width: 180px;
+        height: 180px;
       }
       .nav-link {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
       }
     }
     @media (max-width: 640px) {
@@ -117,17 +181,17 @@
         clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
       }
       .profile-img {
-        width: 120px;
-        height: 120px;
+        width: 140px;
+        height: 140px;
       }
     }
   </style>
 </head>
 <body>
-  <header class="sticky top-0 bg-white shadow-lg z-20">
-    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <h1 class="text-2xl md:text-3xl font-bold text-gray-900">Emmanuel Maeke Kioko</h1>
-      <div class="space-x-6 flex items-center">
+  <header class="sticky top-0 bg-white shadow-xl z-20">
+    <nav class="container mx-auto px-6 py-5 flex justify-between items-center">
+      <h1 class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">Emmanuel Maeke Kioko</h1>
+      <div class="space-x-8 flex items-center">
         <a href="#home" class="nav-link text-gray-700">Home</a>
         <a href="#skills" class="nav-link text-gray-700">Skills</a>
         <a href="#projects" class="nav-link text-gray-700">Projects</a>
@@ -137,16 +201,16 @@
     </nav>
   </header>
 
-  <section id="home" class="hero-bg py-20">
+  <section id="home" class="hero-bg py-24 relative">
     <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
-      <div class="md:w-2/3 text-white fade-in">
-        <h2 class="text-4xl md:text-5xl font-bold mb-4">Emmanuel Maeke Kioko</h2>
-        <p class="text-lg md:text-xl leading-relaxed mb-6">
-          Data Scientist and Analyst with expertise in banking and finance. I transform complex datasets into actionable insights using advanced analytics, machine learning, and dynamic visualizations. My work empowers organizations to make data-driven decisions with precision and clarity.
+      <div class="md:w-2/3 text-white fade-in z-10">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Emmanuel Maeke Kioko</h2>
+        <p class="text-lg md:text-xl leading-relaxed mb-8">
+          Data Scientist and Analyst with a passion for uncovering insights in banking and finance. I leverage advanced analytics, machine learning, and dynamic visualizations to transform complex datasets into strategic solutions, driving impactful data-driven decisions.
         </p>
         <div class="space-x-4">
-          <a href="#projects" class="inline-block px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg shadow-md hover:bg-gray-100 classic-card">Explore Projects</a>
-          <a href="mailto:mtotowajemo3@gmail.com" class="inline-block px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 classic-card">Contact Me</a>
+          <a href="#projects" class="btn-primary inline-block">Explore Projects</a>
+          <a href="mailto:mtotowajemo3@gmail.com" class="btn-secondary inline-block">Contact Me</a>
         </div>
       </div>
       <div class="md:w-1/3 flex justify-center">
@@ -155,7 +219,7 @@
     </div>
   </section>
 
-  <section id="skills" class="py-20 bg-gray-50">
+  <section id="skills" class="py-24 bg-gray-50">
     <div class="container mx-auto px-6">
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">My Skills</h2>
       <div class="flex flex-wrap justify-center gap-4 fade-in">
@@ -175,7 +239,7 @@
     </div>
   </section>
 
-  <section id="projects" class="py-20 bg-white">
+  <section id="projects" class="py-24 bg-white">
     <div class="container mx-auto px-6">
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">My Projects</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -194,16 +258,25 @@
           <p class="text-gray-600 mb-4">AI-driven tool for sentiment analysis of news articles impacting the Nifty index.</p>
           <a href="https://huggingface.co/spaces/MtotoWaJemo/nifty-news-analysis" target="_blank" class="text-blue-600 font-semibold hover:underline">View Project →</a>
         </div>
+        <div class="classic-card p-6 fade-in">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">🔍 Fraud Message Detector</h3>
+          <p class="text-gray-600 mb-4">An AI-powered tool to detect fraudulent messages using natural language processing and machine learning techniques.</p>
+          <a href="https://huggingface.co/spaces/MtotoWaJemo/FraudMessageDetector" target="_blank" class="text-blue-600 font-semibold hover:underline">View Project →</a>
+        </div>
+      </div>
+      <div class="text-center mt-12">
+        <a href="https://git.io/MtotoWaJemo" target="_blank" class="btn-primary inline-block">View More on Git.io</a>
       </div>
     </div>
   </section>
 
-  <footer class="bg-gray-900 text-white py-10">
+  <footer class="bg-gray-900 text-white py-12">
     <div class="container mx-auto px-6 text-center">
       <p class="text-sm mb-4">© 2025 MtotoWaJemo. All rights reserved.</p>
-      <div class="space-x-6">
+      <div class="space-x-8">
         <a href="https://www.linkedin.com/in/emmanuelmaeke/" target="_blank" class="text-gray-300 hover:text-blue-500">LinkedIn</a>
         <a href="mailto:mtotowajemo3@gmail.com" class="text-gray-300 hover:text-blue-500">Email</a>
+        <a href="https://git.io/MtotoWaJemo" target="_blank" class="text-gray-300 hover:text-blue-500">Git.io</a>
       </div>
     </div>
   </footer>
