@@ -11,18 +11,35 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <style>
+    :root {
+      --bg-color: #f9fafb;
+      --text-color: #1f2937;
+      --card-bg: #ffffff;
+      --card-border: #e5e7eb;
+      --accent-color: #3b82f6;
+      --accent-dark: #1e3a8a;
+    }
+    [data-theme="dark"] {
+      --bg-color: #1f2937;
+      --text-color: #f9fafb;
+      --card-bg: #374151;
+      --card-border: #4b5563;
+      --accent-color: #60a5fa;
+      --accent-dark: #2563eb;
+    }
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(to bottom, #f9fafb, #e5e7eb);
-      color: #1f2937;
+      background: var(--bg-color);
+      color: var(--text-color);
       scroll-behavior: smooth;
       line-height: 1.6;
+      transition: background 0.3s ease, color 0.3s ease;
     }
     h1, h2, h3 {
       font-family: 'Playfair Display', serif;
     }
     .hero-bg {
-      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      background: linear-gradient(135deg, var(--accent-dark), var(--accent-color));
       clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
       padding-bottom: 10rem;
       position: relative;
@@ -44,7 +61,7 @@
       height: 220px;
       object-fit: cover;
       border-radius: 50%;
-      border: 6px solid #ffffff;
+      border: 6px solid var(--card-bg);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
@@ -53,12 +70,13 @@
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
     }
     .classic-card {
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
       border-radius: 16px;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
       position: relative;
       overflow: hidden;
+      animation: slideIn 0.5s ease-out;
     }
     .classic-card:hover {
       transform: translateY(-8px);
@@ -71,7 +89,7 @@
       left: 0;
       width: 100%;
       height: 5px;
-      background: linear-gradient(to right, #3b82f6, #1e3a8a);
+      background: linear-gradient(to right, var(--accent-color), var(--accent-dark));
       transition: height 0.3s ease;
     }
     .classic-card:hover::before {
@@ -92,29 +110,30 @@
       height: 3px;
       bottom: -6px;
       left: 0;
-      background: linear-gradient(to right, #3b82f6, #1e3a8a);
+      background: linear-gradient(to right, var(--accent-color), var(--accent-dark));
       transition: width 0.3s ease;
     }
     .nav-link:hover::after {
       width: 100%;
     }
     .nav-link:hover {
-      color: #3b82f6;
+      color: var(--accent-color);
       transform: translateY(-2px);
     }
     .skill-badge {
       display: inline-block;
-      background: linear-gradient(45deg, #e5e7eb, #d1d5db);
-      color: #1f2937;
+      background: linear-gradient(45deg, var(--card-border), var(--card-bg));
+      color: var(--text-color);
       padding: 0.6rem 1.2rem;
       border-radius: 30px;
       font-size: 0.95rem;
       margin: 0.3rem;
       transition: all 0.3s ease;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      animation: popIn 0.5s ease-out;
     }
     .skill-badge:hover {
-      background: linear-gradient(45deg, #3b82f6, #1e3a8a);
+      background: linear-gradient(45deg, var(--accent-color), var(--accent-dark));
       color: #ffffff;
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -123,7 +142,7 @@
       transition: color 0.3s ease, transform 0.3s ease;
     }
     footer a:hover {
-      color: #3b82f6;
+      color: var(--accent-color);
       transform: translateY(-2px);
     }
     .fade-in {
@@ -136,7 +155,7 @@
       transform: translateY(0);
     }
     .btn-primary {
-      background: linear-gradient(45deg, #3b82f6, #1e3a8a);
+      background: linear-gradient(45deg, var(--accent-color), var(--accent-dark));
       color: #ffffff;
       padding: 0.75rem 1.5rem;
       border-radius: 8px;
@@ -144,24 +163,71 @@
       transition: all 0.3s ease;
     }
     .btn-primary:hover {
-      background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+      background: linear-gradient(45deg, var(--accent-dark), var(--accent-color));
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
     .btn-secondary {
       background: transparent;
-      border: 2px solid #ffffff;
-      color: #ffffff;
+      border: 2px solid var(--card-bg);
+      color: var(--card-bg);
       padding: 0.75rem 1.5rem;
       border-radius: 8px;
       font-weight: 600;
       transition: all 0.3s ease;
     }
     .btn-secondary:hover {
-      background: #ffffff;
-      color: #1e3a8a;
+      background: var(--card-bg);
+      color: var(--accent-dark);
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    .theme-toggle {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .theme-toggle:hover {
+      transform: rotate(180deg);
+    }
+    .skills-bg {
+      background: url('https://source.unsplash.com/random/1920x1080/?pattern') no-repeat center center/cover;
+      background-size: cover;
+      position: relative;
+      z-index: 1;
+    }
+    .skills-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-color);
+      opacity: 0.9;
+      z-index: -1;
+    }
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
     @media (max-width: 768px) {
       .hero-bg {
@@ -175,6 +241,10 @@
       .nav-link {
         font-size: 0.95rem;
       }
+      .btn-primary, .btn-secondary {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+      }
     }
     @media (max-width: 640px) {
       .hero-bg {
@@ -184,19 +254,26 @@
         width: 140px;
         height: 140px;
       }
+      .nav-link {
+        font-size: 0.85rem;
+      }
+      .theme-toggle {
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
 <body>
-  <header class="sticky top-0 bg-white shadow-xl z-20">
+  <header class="sticky top-0 bg-white shadow-xl z-20" data-theme="light">
     <nav class="container mx-auto px-6 py-5 flex justify-between items-center">
       <h1 class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">Emmanuel Maeke Kioko</h1>
-      <div class="space-x-8 flex items-center">
+      <div class="flex items-center space-x-8">
         <a href="#home" class="nav-link text-gray-700">Home</a>
         <a href="#skills" class="nav-link text-gray-700">Skills</a>
         <a href="#projects" class="nav-link text-gray-700">Projects</a>
         <a href="mailto:mtotowajemo3@gmail.com" class="nav-link text-gray-700">Email</a>
         <a href="https://www.linkedin.com/in/emmanuelmaeke/" target="_blank" class="nav-link text-gray-700">LinkedIn</a>
+        <button class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
       </div>
     </nav>
   </header>
@@ -219,7 +296,7 @@
     </div>
   </section>
 
-  <section id="skills" class="py-24 bg-gray-50">
+  <section id="skills" class="py-24 skills-bg">
     <div class="container mx-auto px-6">
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">My Skills</h2>
       <div class="flex flex-wrap justify-center gap-4 fade-in">
@@ -295,6 +372,15 @@
       }, { threshold: 0.1 });
 
       elements.forEach(element => observer.observe(element));
+
+      // Dark mode toggle
+      const themeToggle = document.querySelector('.theme-toggle');
+      const body = document.body;
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        body.setAttribute('data-theme', currentTheme);
+        themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+      });
     });
   </script>
 </body>
